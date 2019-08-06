@@ -1,0 +1,31 @@
+Reversing jpg lossy compression
+
+Motivation:
+CT scans are huge in size, and transferring them to and from the cloud is time consuming.
+Since time=brain, we are interested in minimizing the transport time.
+One option is to utilize lossy compression to reduce the size of the files,
+but since in radiology god is in the details, this may increase our error rate.
+The purpose of this project is to explore the option of correcting the loss caused by
+compressing a CT image using jpg.
+
+Data: The data can be found here.
+The tgz file contains 10 CT series (3d scans), 100 slices each.
+Each slice is saved once as raw grayscale (.bmp) and once after jpg compression (.jpg).
+The images were saved using scipy.misc.imsave and can be read using scipy.misc.imread.
+Each CT slice is 512x512 grayscale pixels.
+Note: CT data is actually more complex than 8-bit grayscale, but we make this simplifying
+assumption for the purpose of this exercise.
+
+Goal: write a module that receives a jpg image as input and returns an image as similar
+as possible to the original bmp image as output.
+
+Guidelines:
+* code should be in python, but you're free to leverage any CV/DL infrastructure that
+  you wish.
+* Treat this as regular work, meaning that there's no "one expected solution" and
+  questions are welcome and relevant, both before and during the process.
+* due to lack of a better alternative, please use pixel-wise RMSE as your metric.
+
+
+Please submit here:
+https://app2.greenhouse.io/tests/e65a1320e19ff04d862a260e54eedc96
