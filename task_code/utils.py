@@ -36,3 +36,7 @@ def save_to_pkl(pth, **vars):
 def load_from_pkl(pth):
     with open(pth, 'rb') as f:
         return pickle.load(f)
+
+
+def check_colab_import():
+    print('OK')
