@@ -1,6 +1,7 @@
 """
 Utils file
 """
+import pickle
 from imageio import imread, imwrite
 import numpy as np
 from sklearn.feature_extraction import image
@@ -26,3 +27,12 @@ def extract_patches(img, patch_size):
     return image.extract_patches_2d(img, patch_size=(patch_size, patch_size))
 
 
+def save_to_pkl(pth, **vars):
+    with open(pth, 'wb') as f:
+        pickle.dump(vars, f)
+    print('saved to {}'.format(pth))
+
+
+def load_from_pkl(pth):
+    with open(pth, 'rb') as f:
+        return pickle.load(f)
