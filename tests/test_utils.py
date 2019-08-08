@@ -1,8 +1,8 @@
 import unittest
 
+from matplotlib import pyplot as plt
 import numpy as np
 import os
-import tarfile
 import tempfile
 
 from task_code import utils
@@ -35,3 +35,12 @@ class TestUtils(unittest.TestCase):
         self.assertTrue(os.path.exists(temp_file))
         loaded_img = utils.get_image(temp_file)
         np.testing.assert_almost_equal(img, loaded_img)
+
+    def test_extract_patches(self):
+        pth = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'files', 'series_009_slice_093.bmp')
+        img = utils.get_image(pth)
+
+        patch_array = utils.extract_patches(img, patch_size=16)
+        self.assertEqual(patch_array.shape, (247009, 16, 16))
+        # TODO: need to test patch correctness - checked visually for exercise purpose
+        # plt.imshow(patch_array[123504, :, :], cmap='gray')
